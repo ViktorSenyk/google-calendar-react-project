@@ -11,13 +11,22 @@ class App extends Component {
     weekStartDate: new Date(),
   };
 
+  setWeekStart = (setting) => {
+    this.setState({
+      weekStartDate:
+        setting === 'reset'
+          ? new Date()
+          : new Date(this.state.weekStartDate.getTime() + setting),
+    });
+  };
+
   render() {
     const { weekStartDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
     return (
       <>
-        <Header />
+        <Header setWeekStart={this.setWeekStart} weekStartDay={weekStartDate} />
         <Calendar weekDates={weekDates} />
       </>
     );

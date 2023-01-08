@@ -1,3 +1,22 @@
+import shmoment from './shmoment';
+
+export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+export const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 export const getWeekStartDate = (date) => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();
@@ -30,18 +49,20 @@ export const formatMins = (mins) => {
   return mins < 10 ? `0${mins}` : mins;
 };
 
-export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-export const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+// вернет месяц и год для недели, в которой находится переданный день
+export const getDisplayedMonth = (date) => {
+  const weekStart = getWeekStartDate(date);
+  const weekEnd = shmoment(date).add('days', 6).result();
+  const startMonth = weekStart.getMonth();
+  const startYear = weekStart.getFullYear();
+  const endMonth = weekEnd.getMonth();
+  const endYear = weekEnd.getFullYear();
+  const isSameMonth = startMonth === endMonth;
+  if (isSameMonth) {
+    return `${months[startMonth]} ${startYear}`;
+  }
+  const isSameYear = startYear === endYear;
+  return isSameYear
+    ? `${months[startMonth]} - ${months[endMonth]} ${startYear}`
+    : `${months[startMonth]} ${startYear} - ${months[endMonth]} ${endYear}`;
+};
