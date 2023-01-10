@@ -15,3 +15,14 @@
     border-left: 1px solid #eee;
   }
 }
+
+.day-label__day-number_current {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}

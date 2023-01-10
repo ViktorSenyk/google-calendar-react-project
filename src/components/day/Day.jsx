@@ -3,25 +3,19 @@ import Hour from '../hour/Hour';
 
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents }) => {
+export default function Day({ dateInfoInNumbers, events }) {
   const hours = Array(24)
     .fill()
-    .map((val, index) => index);
-
+    .map((_, index) => index);
   return (
-    <div className="calendar__day" data-day={dataDay}>
-      {hours.map((hour) => {
-        //getting all events from the day we will render
-        const hourEvents = dayEvents.filter(
-          (event) => event.dateFrom.getHours() === hour
-        );
-
-        return (
-          <Hour key={dataDay + hour} dataHour={hour} hourEvents={hourEvents} />
-        );
-      })}
+    <div className="calendar__day" data-day={`${dateInfoInNumbers}`}>
+      {hours.map((hour) => (
+        <Hour
+          key={hour}
+          dataHour={hour}
+          events={events.filter((event) => event.start.time === hour)}
+        />
+      ))}
     </div>
   );
-};
-
-export default Day;
+}

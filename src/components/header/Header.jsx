@@ -1,40 +1,51 @@
-import React from 'react';
-import { getDisplayedMonth } from '../../utils/dateUtils';
+import React, { Component } from 'react';
 
 import './header.scss';
 
-const Header = ({ weekStartDay, setWeekStart }) => {
-  const weekInMiliseconds = 6.048e8;
-  return (
-    <header className="header">
-      <button className="button create-event-btn">
-        <i className="fas fa-plus create-event-btn__icon"></i>Create
-      </button>
-      <div className="navigation">
-        <button
-          className="navigation__today-btn button"
-          onClick={() => setWeekStart('reset')}
-        >
-          Today
-        </button>
-        <button
-          className="icon-button navigation__nav-icon"
-          onClick={() => setWeekStart(-weekInMiliseconds)}
-        >
-          <i className="fas fa-chevron-left"></i>
-        </button>
-        <button
-          className="icon-button navigation__nav-icon"
-          onClick={() => setWeekStart(weekInMiliseconds)}
-        >
-          <i className="fas fa-chevron-right"></i>
-        </button>
-        <span className="navigation__displayed-month">
-          {getDisplayedMonth(weekStartDay)}
-        </span>
-      </div>
-    </header>
-  );
-};
+export default class Header extends Component {
+  getDisplayedMonth = () => {
+    const { weekStartDate } = this.props;
+    const weekStartDateCopy = weekStartDate.clone();
+    return weekStartDate.format('MMMM YYYY') ===
+      weekStartDateCopy.endOf('isoWeek').format('MMMM YYYY')
+      ? weekStartDate.format('MMMM YYYY')
+      : `${weekStartDate.format('MMMM YYYY')} — ${weekStartDateCopy
+          .endOf('isoWeek')
+          .format('MMMM YYYY')}`;
+  };
 
-export default Header;
+  render = () => {
+    const { onSetWeekStart } = this.props;
+
+    return (
+      <header className="header">
+        <button className="button create-event-btn">
+          <i className="fas fa-plus create-event-btn__icon"></i>Create
+        </button>
+        <div className="navigation">
+          <button
+            className="navigation__today-btn button"
+            onClick={() => onSetWeekStart()}
+          >
+            Today
+          </button>
+          <button
+            className="icon-button navigation__nav-icon"
+            onClick={() => onSetWeekStart('-')}
+          >
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <button
+            className="icon-button navigation__nav-icon"
+            onClick={() => onSetWeekStart('+')}
+          >
+            <i className="fas fa-chevron-right"></i>
+          </button>
+          <span className="navigation__displayed-month">
+            {this.getDisplayedMonth()}
+          </span>
+        </div>
+      </header>
+    );
+  };
+}

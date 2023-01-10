@@ -1,36 +1,42 @@
 import React, { Component } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
+import moment from 'moment';
 
-import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
+// import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 
 import './common.scss';
 
-class App extends Component {
+export default class App extends Component {
   state = {
-    weekStartDate: new Date(),
+    weekStartDate: moment().startOf('isoWeek'),
   };
 
-  setWeekStart = (setting) => {
+  onSetWeekStart = (set) =>
     this.setState({
-      weekStartDate:
-        setting === 'reset'
-          ? new Date()
-          : new Date(this.state.weekStartDate.getTime() + setting),
+      weekStartDate: this.setWeekStart(set),
     });
+
+  setWeekStart = (set) => {
+    if (set === '+') return this.state.weekStartDate.add(7, 'd');
+    if (set === '-') return this.state.weekStartDate.subtract(7, 'd');
+    return moment().startOf('isoWeek');
   };
 
-  render() {
-    const { weekStartDate } = this.state;
-    const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+  render = () => {
+    // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
     return (
       <>
-        <Header setWeekStart={this.setWeekStart} weekStartDay={weekStartDate} />
-        <Calendar weekDates={weekDates} />
+        <Header
+          weekStartDate={this.state.weekStartDate}
+          onSetWeekStart={this.onSetWeekStart}
+        />
+        <Calendar
+          weekStartDate={this.state.weekStartDate}
+          // weekDates={weekDates}
+        />
       </>
     );
-  }
+  };
 }
-
-export default App;
