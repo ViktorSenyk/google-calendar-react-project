@@ -12,8 +12,9 @@ export default function Navigation({ currentWeekInfo }) {
           <div className="calendar__day-label day-label" key={dayNumber}>
             <span className="day-label__day-name">{dayName}</span>
             <span
+              data-day={dateInfoInNumbers}
               className={`day-label__day-number ${
-                dayNumber === moment().format('DD')
+                dateInfoInNumbers === moment().format('DD.MM.YYYY')
                   ? 'day-label__day-number_current'
                   : ''
               }`}

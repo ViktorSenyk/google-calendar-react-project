@@ -3,8 +3,6 @@ import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import moment from 'moment';
 
-// import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
-
 import './common.scss';
 
 export default class App extends Component {
@@ -23,20 +21,13 @@ export default class App extends Component {
     return moment().startOf('isoWeek');
   };
 
-  render = () => {
-    // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-
-    return (
-      <>
-        <Header
-          weekStartDate={this.state.weekStartDate}
-          onSetWeekStart={this.onSetWeekStart}
-        />
-        <Calendar
-          weekStartDate={this.state.weekStartDate}
-          // weekDates={weekDates}
-        />
-      </>
-    );
-  };
+  render = () => (
+    <>
+      <Header
+        weekStartDate={this.state.weekStartDate}
+        onSetWeekStart={this.onSetWeekStart}
+      />
+      <Calendar weekStartDate={this.state.weekStartDate} />
+    </>
+  );
 }

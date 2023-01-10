@@ -2,10 +2,10 @@ import React from 'react';
 
 import './sidebar.scss';
 
-const Sidebar = (props) => {
+export default function Sidebar() {
   const hours = Array(24)
     .fill()
-    .map((val, index) => index);
+    .map((_, index) => index);
 
   return (
     <div className="calendar__time-scale">
@@ -17,5 +17,3 @@ const Sidebar = (props) => {
     </div>
   );
 };
-
-export default Sidebar;

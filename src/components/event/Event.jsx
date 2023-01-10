@@ -2,7 +2,7 @@ import React from 'react';
 
 import './event.scss';
 
-const Event = ({ height, title, time }) => {
+export default function Event({ height, title, time }) {
   const eventStyle = {
     height: height + 'px',
   };
@@ -13,6 +13,4 @@ const Event = ({ height, title, time }) => {
       <div className="event__time">{time}</div>
     </div>
   );
-};
-
-export default Event;
+}
