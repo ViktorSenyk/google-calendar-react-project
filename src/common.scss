@@ -19,7 +19,7 @@
 
 .modal {
   position: fixed;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 
@@ -37,7 +37,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: rgb(14 0 0 / 68%);
   z-index: 10;
 }
 

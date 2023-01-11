@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 
@@ -11,17 +11,6 @@
     border-radius: 8px;
   }
 }
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #cccccc45;
-  z-index: 10;
-}
-
 .create-event {
   display: flex;
   flex-direction: column;
