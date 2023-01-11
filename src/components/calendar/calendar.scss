@@ -1,12 +1,12 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 70px);
 
   &__header {
     display: flex;
     height: 100px;
-    padding-left: 48px;
+    padding: 0 17px 0 49px;
   }
 
   &__body {
@@ -41,9 +41,6 @@
     height: 60px;
     position: relative;
     border-bottom: 1px solid #eee;
-    &:hover {
-      background-color: rgba(255, 0, 0, 0.247);
-    }
   }
 
   &__day-label {
@@ -57,7 +54,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  opacity: 0.6;
+  color: rgba(0, 0, 0, 0.6);
+  // opacity: 0.6;
 
   &__day-name {
     font-size: 14px;

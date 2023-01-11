@@ -1,4 +1,7 @@
 .minutes {
     width: 100%;
     height: 25%;
+    &:hover {
+        background-color: rgb(255 79 79);
+    }
 }

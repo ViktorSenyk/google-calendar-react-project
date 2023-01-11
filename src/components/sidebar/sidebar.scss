@@ -15,20 +15,31 @@
   height: 60px;
   width: 48px;
   text-align: right;
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    height: 1px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
 
   &__time {
     position: absolute;
+    top: 4px;
     font-size: 12px;
-    opacity: 0.7;
-    top: -6px;
-    right: 6px; 
+    // opacity: 0.7;
+    right: 6px;
+    color: rgba(0, 0, 0, 0.6);
     z-index: 10;
   }
-  &__redLine {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: red;
-  }
+  // &__redLine {
+  //   position: absolute;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 3px;
+  //   background-color: red;
+  // }
 }
