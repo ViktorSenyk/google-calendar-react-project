@@ -1,15 +1,3 @@
-.calendar {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 60px);
-
-  &__time-scale {
-    position: relative;
-    height: 100%;
-    width: 48px;
-  }
-}
-
 .time-slot {
   position: relative;
   height: 60px;
@@ -30,16 +18,8 @@
     position: absolute;
     top: 4px;
     font-size: 12px;
-    // opacity: 0.7;
     right: 6px;
     color: rgba(0, 0, 0, 0.6);
     z-index: 10;
   }
-  // &__redLine {
-  //   position: absolute;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 3px;
-  //   background-color: red;
-  // }
 }
