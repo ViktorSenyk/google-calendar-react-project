@@ -7,6 +7,8 @@ export default function Minutes({
   minutesForData,
   filteredByMinutesEvents,
   onUpdate,
+  setInfoFromClickedEvent,
+  setModalWindowBoolean,
 }) {
   return (
     <div className="minutes" data-minutes={minutesForData}>
@@ -22,8 +24,11 @@ export default function Minutes({
             id={event.id}
             height={heightForEvent}
             title={event.title}
+            description={event.description}
             time={`${event.start.time} - ${event.end.time}`}
             onUpdate={onUpdate}
+            setInfoFromClickedEvent={setInfoFromClickedEvent}
+            setModalWindowBoolean={setModalWindowBoolean}
           />
         );
       })}

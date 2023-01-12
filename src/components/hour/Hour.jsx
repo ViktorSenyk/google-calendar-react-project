@@ -3,7 +3,13 @@ import Minutes from '../minutes/Minutes';
 
 import './hour.scss';
 
-export default function Hour({ hourForData, filteredByHourEvents, onUpdate }) {
+export default function Hour({
+  hourForData,
+  filteredByHourEvents,
+  onUpdate,
+  setInfoFromClickedEvent,
+  setModalWindowBoolean,
+}) {
   return (
     <div className="calendar__time-slot" data-hour={hourForData}>
       {[0, 15, 30, 45].map((minutesForData) => (
@@ -15,6 +21,8 @@ export default function Hour({ hourForData, filteredByHourEvents, onUpdate }) {
             return Number(minutes) === minutesForData;
           })}
           onUpdate={onUpdate}
+          setInfoFromClickedEvent={setInfoFromClickedEvent}
+          setModalWindowBoolean={setModalWindowBoolean}
         />
       ))}
     </div>

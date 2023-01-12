@@ -24,6 +24,10 @@ export default function Calendar({
 
   const [events, updateEvents] = useState([]);
 
+  //////////////////
+  const [infoFromClickedEvent, setInfoFromClickedEvent] = useState(null);
+  //////////////////
+
   const onUpdate = () => {
     updateFromServer().then((data) => updateEvents(data));
   };
@@ -40,6 +44,7 @@ export default function Calendar({
         <Modal
           setOnOffBoolean={setModalWindowBoolean}
           clickInfo={clickInfo}
+          infoFromClickedEvent={infoFromClickedEvent}
           onUpdate={onUpdate}
         />
       ) : null}
@@ -56,6 +61,8 @@ export default function Calendar({
             currentWeekInfo={currentWeekInfo}
             events={events}
             onUpdate={onUpdate}
+            setInfoFromClickedEvent={setInfoFromClickedEvent}
+            setModalWindowBoolean={setModalWindowBoolean}
           />
         </div>
       </div>

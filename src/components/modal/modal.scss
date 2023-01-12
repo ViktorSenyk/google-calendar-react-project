@@ -14,6 +14,7 @@
 .create-event {
   display: flex;
   flex-direction: column;
+  min-width: 300px;
 
   &__close-btn {
     margin-left: auto;

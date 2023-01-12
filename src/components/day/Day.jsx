@@ -8,6 +8,8 @@ export default function Day({
   dateInfoInNumbers,
   filteredByDayEvents,
   onUpdate,
+  setInfoFromClickedEvent,
+  setModalWindowBoolean,
 }) {
   // ======================================= topMarginForLine & setTopMarginForLine = settings for 'red line' (line for current time)
   const [currentHoursForStartPosition, currentMinutesForStartPosition] =
@@ -47,6 +49,8 @@ export default function Day({
             return Number(startHour) === hour;
           })}
           onUpdate={onUpdate}
+          setInfoFromClickedEvent={setInfoFromClickedEvent}
+          setModalWindowBoolean={setModalWindowBoolean}
         />
       ))}
     </div>

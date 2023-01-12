@@ -3,7 +3,13 @@ import Day from '../day/Day';
 
 import './week.scss';
 
-export default function Week({ currentWeekInfo, events, onUpdate }) {
+export default function Week({
+  currentWeekInfo,
+  events,
+  onUpdate,
+  setInfoFromClickedEvent,
+  setModalWindowBoolean,
+}) {
   return currentWeekInfo.map((day) => {
     const [dateInfoInNumbers] = day.split(' ');
     return (
@@ -14,6 +20,8 @@ export default function Week({ currentWeekInfo, events, onUpdate }) {
           (event) => event.start.day === dateInfoInNumbers
         )}
         onUpdate={onUpdate}
+        setInfoFromClickedEvent={setInfoFromClickedEvent}
+        setModalWindowBoolean={setModalWindowBoolean}
       />
     );
   });

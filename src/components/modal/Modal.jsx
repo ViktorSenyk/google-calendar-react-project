@@ -3,9 +3,18 @@ import { onCreateTask } from '../../gateway/tasksGateway';
 
 import './modal.scss';
 
-export default function Modal({ setOnOffBoolean, clickInfo, onUpdate }) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+export default function Modal({
+  setOnOffBoolean,
+  clickInfo,
+  infoFromClickedEvent,
+  onUpdate,
+}) {
+  const [title, setTitle] = useState(
+    infoFromClickedEvent ? infoFromClickedEvent.title : ''
+  );
+  const [description, setDescription] = useState(
+    infoFromClickedEvent ? infoFromClickedEvent.description : ''
+  );
   const [startDate, setStartDate] = useState(clickInfo.day);
   const [startTime, setStartTime] = useState(
     `${clickInfo.hour}:${clickInfo.minutes}`

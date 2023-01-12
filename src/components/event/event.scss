@@ -6,6 +6,9 @@
   border-radius: 8px;
   padding: 8px;
   color: #fff;
+  &_relative {
+    position: relative;
+  }
 
   &__title {
     position: relative;
