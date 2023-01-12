@@ -2,7 +2,11 @@ import React from 'react';
 
 import './header.scss';
 
-export default function Header({ weekStartDate, onSetWeekStart }) {
+export default function Header({
+  weekStartDate,
+  onSetWeekStart,
+  setModalWindowBoolean,
+}) {
   const getDisplayedMonth = () => {
     const weekStartDateCopy = weekStartDate.clone();
     return weekStartDate.format('MMMM YYYY') ===
@@ -15,7 +19,10 @@ export default function Header({ weekStartDate, onSetWeekStart }) {
 
   return (
     <header className="header">
-      <button className="button create-event-btn">
+      <button
+        className="button create-event-btn"
+        onClick={() => setModalWindowBoolean(true)}
+      >
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">

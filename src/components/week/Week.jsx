@@ -1,10 +1,9 @@
 import React from 'react';
 import Day from '../day/Day';
-import events from '../../gateway/events';
 
 import './week.scss';
 
-export default function Week({ currentWeekInfo }) {
+export default function Week({ currentWeekInfo, events, onUpdate }) {
   // ======================================= currentWeekInfo = ['DD.MM.YYYY dddd', 'DD.MM.YYYY dddd' ... + 5]
   return currentWeekInfo.map((day) => {
     // ======================================= dateInfoInNumbers = 'DD.MM.YYYY' ('10.01.2023')
@@ -14,7 +13,10 @@ export default function Week({ currentWeekInfo }) {
       <Day
         key={dateInfoInNumbers}
         dateInfoInNumbers={dateInfoInNumbers}
-        filteredByDayEvents={events.filter((event) => event.start.day === dateInfoInNumbers)}
+        filteredByDayEvents={events.filter(
+          (event) => event.start.day === dateInfoInNumbers
+        )}
+        onUpdate={onUpdate}
       />
     );
   });

@@ -3,7 +3,11 @@ import Event from '../event/Event';
 
 import './minutes.scss';
 
-export default function Minutes({ minutesForData, filteredByMinutesEvents }) {
+export default function Minutes({
+  minutesForData,
+  filteredByMinutesEvents,
+  onUpdate,
+}) {
   return (
     <div className="minutes" data-minutes={minutesForData}>
       {filteredByMinutesEvents.map((event) => {
@@ -16,9 +20,11 @@ export default function Minutes({ minutesForData, filteredByMinutesEvents }) {
         return (
           <Event
             key={event.id}
+            id={event.id}
             height={heightForEvent}
             title={event.title}
             time={`${event.start.time} - ${event.end.time}`}
+            onUpdate={onUpdate}
           />
         );
       })}

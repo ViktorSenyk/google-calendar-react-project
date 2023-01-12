@@ -8,17 +8,41 @@
   color: #fff;
 
   &__title {
+    position: relative;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding: 2px 0;
     margin-bottom: 8px;
+    border-bottom: 2px solid rgb(255 79 79);
   }
 
-  &:hover {
-    background-color: rgb(41, 94, 192);
-    // font-weight: bold;
-    // background-color: red;
+  &__time {
+    position: relative;
+  }
+
+  &__deleteButton {
+    position: absolute;
+    top: -31px;
+    right: -5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 13px;
+    cursor: alias;
+    &:hover {
+      background-color: rgb(255 79 79);
+      color: white;
+    }
+    &:active {
+      background-color: red;
+    }
   }
 }
 

@@ -4,7 +4,11 @@ import moment from 'moment';
 
 import './day.scss';
 
-export default function Day({ dateInfoInNumbers, filteredByDayEvents }) {
+export default function Day({
+  dateInfoInNumbers,
+  filteredByDayEvents,
+  onUpdate,
+}) {
   // ======================================= topMarginForLine & setTopMarginForLine = settings for 'red line' (line for current time)
   const [topMarginForLine, setTopMarginForLine] = useState(0);
   // ======================================= interval for 'red line' (watch current time & regular update)
@@ -35,12 +39,11 @@ export default function Day({ dateInfoInNumbers, filteredByDayEvents }) {
         <Hour
           key={hour}
           hourForData={hour}
-          filteredByHourEvents={filteredByDayEvents.filter(
-            (event) => {
-              const [startHour] = event.start.time.split(':');
-              return Number(startHour) === hour;
-            } 
-          )}
+          filteredByHourEvents={filteredByDayEvents.filter((event) => {
+            const [startHour] = event.start.time.split(':');
+            return Number(startHour) === hour;
+          })}
+          onUpdate={onUpdate}
         />
       ))}
     </div>

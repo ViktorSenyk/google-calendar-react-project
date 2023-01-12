@@ -4,7 +4,7 @@ import Minutes from '../minutes/Minutes';
 
 import './hour.scss';
 
-export default function Hour({ hourForData, filteredByHourEvents }) {
+export default function Hour({ hourForData, filteredByHourEvents, onUpdate }) {
   return (
     <div className="calendar__time-slot" data-hour={hourForData}>
       {[0, 15, 30, 45].map((minutesForData) => (
@@ -15,6 +15,7 @@ export default function Hour({ hourForData, filteredByHourEvents }) {
             const [, minutes] = event.start.time.split(':');
             return Number(minutes) === minutesForData;
           })}
+          onUpdate={onUpdate}
         />
       ))}
     </div>

@@ -8,7 +8,11 @@ import './common.scss';
 export default class App extends Component {
   state = {
     weekStartDate: moment().startOf('isoWeek'),
+    modalWindowBoolean: false,
   };
+
+  setModalWindowBoolean = (boolean) =>
+    this.setState({ modalWindowBoolean: boolean });
 
   onSetWeekStart = (set) =>
     this.setState({
@@ -26,8 +30,13 @@ export default class App extends Component {
       <Header
         weekStartDate={this.state.weekStartDate}
         onSetWeekStart={this.onSetWeekStart}
+        setModalWindowBoolean={this.setModalWindowBoolean}
       />
-      <Calendar weekStartDate={this.state.weekStartDate} />
+      <Calendar
+        weekStartDate={this.state.weekStartDate}
+        modalWindowBoolean={this.state.modalWindowBoolean}
+        setModalWindowBoolean={this.setModalWindowBoolean}
+      />
     </>
   );
 }
