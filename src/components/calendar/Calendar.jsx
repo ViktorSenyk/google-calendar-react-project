@@ -8,6 +8,7 @@ import {
   currentWeekRangeInfoGenerator,
   getInfoFromClick,
 } from '../../instruments/instruments';
+import moment from 'moment';
 
 import './calendar.scss';
 
@@ -16,10 +17,13 @@ export default function Calendar({
   modalWindowBoolean,
   setModalWindowBoolean,
 }) {
+  const [currentDate, currentHour, currentMinutes] = moment()
+    .format('YYYY-MM-DD hh mm')
+    .split(' ');
   const [clickInfo, setClickInfo] = useState({
-    day: '2023-01-11',
-    hour: '12',
-    minutes: '00',
+    day: currentDate,
+    hour: currentHour,
+    minutes: currentMinutes,
   });
 
   const [events, updateEvents] = useState([]);
