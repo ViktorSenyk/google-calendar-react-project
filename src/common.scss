@@ -3,9 +3,7 @@
   outline: none;
   cursor: pointer;
   padding-top: 2px;
-  background-color: white;
   &:hover {
-    background-color: rgb(255 79 79);
     color: white;
   }
 }
@@ -17,20 +15,6 @@
   background: transparent;
 }
 
-// .modal {
-//   position: fixed;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   &__content {
-//     background: #fff;
-//     padding: 16px;
-//     border: 1px solid #ccc;
-//     border-radius: 8px;
-//   }
-// }
-
 .overlay {
   position: fixed;
   top: 0;
@@ -40,17 +24,3 @@
   background-color: rgb(14 0 0 / 68%);
   z-index: 10;
 }
-
-// .popup {
-//   &__content {
-//     position: absolute;
-//     background: #fff;
-//     padding: 16px;
-//     border: 1px solid #ccc;
-//     border-radius: 8px;
-//   }
-// }
-
-// .hidden {
-//   display: none;
-// }
