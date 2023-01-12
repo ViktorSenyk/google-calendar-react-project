@@ -1,6 +1,5 @@
 import React from 'react';
 import Minutes from '../minutes/Minutes';
-// import Event from '../event/Event';
 
 import './hour.scss';
 

@@ -12,6 +12,17 @@ export default function Modal({ setOnOffBoolean, clickInfo, onUpdate }) {
   );
   const [endTime, setEndTime] = useState('23:45');
 
+  const onCreate = (e) => {
+    e.preventDefault();
+    const [year, month, day] = startDate.split('-');
+    onCreateTask({
+      title: title ? title : '...',
+      description: description,
+      start: { day: `${day}.${month}.${year}`, time: startTime },
+      end: { day: `${day}.${month}.${year}`, time: endTime },
+    }).then(() => onUpdate());
+    setOnOffBoolean(false);
+  };
 
   return (
     <div className="modal overlay">
@@ -65,17 +76,7 @@ export default function Modal({ setOnOffBoolean, clickInfo, onUpdate }) {
             ></textarea>
             <button
               className="event-form__submit-btn"
-              onClick={(e) => {
-                e.preventDefault();
-                const [year, month, day] = startDate.split('-');
-                onCreateTask({
-                  title: title ? title : '...',
-                  description: description,
-                  start: { day: `${day}.${month}.${year}`, time: startTime },
-                  end: { day: `${day}.${month}.${year}`, time: endTime },
-                }).then(() => onUpdate());
-                setOnOffBoolean(false);
-              }}
+              onClick={(e) => onCreate(e)}
             >
               Create
             </button>

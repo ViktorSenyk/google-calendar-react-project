@@ -1,4 +1,5 @@
 import React from 'react';
+import { getDisplayedMonth } from '../../instruments/instruments';
 
 import './header.scss';
 
@@ -7,16 +8,6 @@ export default function Header({
   onSetWeekStart,
   setModalWindowBoolean,
 }) {
-  const getDisplayedMonth = () => {
-    const weekStartDateCopy = weekStartDate.clone();
-    return weekStartDate.format('MMMM YYYY') ===
-      weekStartDateCopy.endOf('isoWeek').format('MMMM YYYY')
-      ? weekStartDate.format('MMMM YYYY')
-      : `${weekStartDate.format('MMMM YYYY')} — ${weekStartDateCopy
-          .endOf('isoWeek')
-          .format('MMMM YYYY')}`;
-  };
-
   return (
     <header className="header">
       <button
@@ -45,7 +36,7 @@ export default function Header({
           <i className="fas fa-chevron-right"></i>
         </button>
         <span className="navigation__displayed-month">
-          {getDisplayedMonth()}
+          {getDisplayedMonth(weekStartDate)}
         </span>
       </div>
     </header>

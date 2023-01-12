@@ -13,7 +13,6 @@ export default function Minutes({
       {filteredByMinutesEvents.map((event) => {
         const [startHours, startMinutes] = event.start.time.split(':');
         const [endHours, endMinutes] = event.end.time.split(':');
-        // ======================================= heightForEvent = number(height for event)
         const heightForEvent =
           (Number(endHours) - Number(startHours)) * 60 +
           (Number(endMinutes) - Number(startMinutes));

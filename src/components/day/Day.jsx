@@ -10,22 +10,26 @@ export default function Day({
   onUpdate,
 }) {
   // ======================================= topMarginForLine & setTopMarginForLine = settings for 'red line' (line for current time)
-  const [topMarginForLine, setTopMarginForLine] = useState(0);
+  const [currentHoursForStartPosition, currentMinutesForStartPosition] =
+    moment().format('H:m').split(':');
+  const [topMarginForLine, setTopMarginForLine] = useState(
+    Number(currentHoursForStartPosition) * 60 +
+      Number(currentMinutesForStartPosition)
+  );
   // ======================================= interval for 'red line' (watch current time & regular update)
   useEffect(() => {
     setInterval(() => {
       const [hours, minutes] = moment().format('H:m').split(':');
       setTopMarginForLine(Number(hours) * 60 + Number(minutes));
-    }, 1000);
+    }, 60000);
   }, []);
   // ======================================= hours = [0, 1, 2, ...] (array for hours render)
   const hours = Array(24)
     .fill()
     .map((_, index) => index);
-  // ======================================= render: 'red line' & Hour
+
   return (
     <div className="calendar__day" data-day={`${dateInfoInNumbers}`}>
-      {/* =======================================  render: 'red line' for current day! */}
       {dateInfoInNumbers === moment().format('DD.MM.YYYY') ? (
         <div
           className="currentTimeLine"
@@ -34,7 +38,6 @@ export default function Day({
           <div className="currentTimeLine__circle" />
         </div>
       ) : null}
-      {/* ======================================= render: Hour */}
       {hours.map((hour) => (
         <Hour
           key={hour}
