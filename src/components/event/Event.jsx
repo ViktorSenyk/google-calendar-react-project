@@ -11,13 +11,13 @@ export default function Event({
   id,
   onUpdate,
   setInfoFromClickedEvent,
-  setModalWindowBoolean,
+  setIsModalWindowActive,
 }) {
   const eventStyle = {
     height: height + 'px',
   };
 
-  const onDelete = (e) => {
+  const onDelete = e => {
     e.stopPropagation();
     onDeleteTask(e.target.closest('.event').dataset.id).then(() => onUpdate());
   };
@@ -33,13 +33,13 @@ export default function Event({
           description: description,
           time: time,
         });
-        setModalWindowBoolean(true);
+        setIsModalWindowActive(true);
       }}
     >
       <div className="event__title">{title}</div>
       <div className="event__time">
         {time}
-        <button className="event__deleteButton" onClick={(e) => onDelete(e)}>
+        <button className="event__deleteButton" onClick={e => onDelete(e)}>
           x
         </button>
       </div>

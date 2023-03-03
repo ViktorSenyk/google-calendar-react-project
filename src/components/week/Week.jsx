@@ -8,20 +8,18 @@ export default function Week({
   events,
   onUpdate,
   setInfoFromClickedEvent,
-  setModalWindowBoolean,
+  setIsModalWindowActive,
 }) {
-  return currentWeekInfo.map((day) => {
+  return currentWeekInfo.map(day => {
     const [dateInfoInNumbers] = day.split(' ');
     return (
       <Day
         key={dateInfoInNumbers}
         dateInfoInNumbers={dateInfoInNumbers}
-        filteredByDayEvents={events.filter(
-          (event) => event.start.day === dateInfoInNumbers
-        )}
+        filteredByDayEvents={events.filter(event => event.start.day === dateInfoInNumbers)}
         onUpdate={onUpdate}
         setInfoFromClickedEvent={setInfoFromClickedEvent}
-        setModalWindowBoolean={setModalWindowBoolean}
+        setIsModalWindowActive={setIsModalWindowActive}
       />
     );
   });

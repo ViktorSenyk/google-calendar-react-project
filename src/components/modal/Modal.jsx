@@ -4,43 +4,36 @@ import { onCreateTask } from '../../gateway/tasksGateway';
 import './modal.scss';
 
 export default function Modal({
-  setOnOffBoolean,
-  clickInfo,
+  setIsModalWindowActive,
+  selectedDateByClick,
   infoFromClickedEvent,
   onUpdate,
 }) {
-  const [title, setTitle] = useState(
-    infoFromClickedEvent ? infoFromClickedEvent.title : ''
-  );
-  const [description, setDescription] = useState(
-    infoFromClickedEvent ? infoFromClickedEvent.description : ''
-  );
-  const [startDate, setStartDate] = useState(clickInfo.day);
-  const [startTime, setStartTime] = useState(
-    `${clickInfo.hour}:${clickInfo.minutes}`
-  );
-  const [endTime, setEndTime] = useState('23:45');
+  const [formData, setFormData] = useState({
+    title: infoFromClickedEvent ? infoFromClickedEvent.title : '',
+    description: infoFromClickedEvent ? infoFromClickedEvent.description : '',
+    startDate: selectedDateByClick.day,
+    startTime: `${selectedDateByClick.hour}:${selectedDateByClick.minutes}`,
+    endTime: '23:45',
+  });
 
-  const onCreate = (e) => {
+  const onCreate = e => {
     e.preventDefault();
-    const [year, month, day] = startDate.split('-');
+    const [year, month, day] = formData.startDate.split('-');
     onCreateTask({
-      title: title ? title : '...',
-      description: description,
-      start: { day: `${day}.${month}.${year}`, time: startTime },
-      end: { day: `${day}.${month}.${year}`, time: endTime },
+      title: formData.title ? formData.title : '...',
+      description: formData.description,
+      start: { day: `${day}.${month}.${year}`, time: formData.startTime },
+      end: { day: `${day}.${month}.${year}`, time: formData.endTime },
     }).then(() => onUpdate());
-    setOnOffBoolean(false);
+    setIsModalWindowActive(false);
   };
 
   return (
     <div className="modal overlay">
       <div className="modal__content">
         <div className="create-event">
-          <button
-            className="create-event__close-btn"
-            onClick={() => setOnOffBoolean(false)}
-          >
+          <button className="create-event__close-btn" onClick={() => setIsModalWindowActive(false)}>
             +
           </button>
           <form className="event-form">
@@ -49,44 +42,41 @@ export default function Modal({
               name="title"
               placeholder="Write your title..."
               className="event-form__field"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={formData.title}
+              onChange={e => setFormData({ ...formData, title: e.target.value })}
             />
             <div className="event-form__time">
               <input
                 type="date"
                 name="date"
                 className="event-form__field"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
+                value={formData.startDate}
+                onChange={e => setFormData({ ...formData, startDate: e.target.value })}
               />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                value={startTime}
-                onChange={(e) => setStartTime(e.target.value)}
+                value={formData.startTime}
+                onChange={e => setFormData({ ...formData, startTime: e.target.value })}
               />
               <span>-</span>
               <input
                 type="time"
                 name="endTime"
                 className="event-form__field"
-                value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
+                value={formData.endTime}
+                onChange={e => setFormData({ ...formData, endTime: e.target.value })}
               />
             </div>
             <textarea
               name="description"
               placeholder="Description"
               className="event-form__field"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={formData.description}
+              onChange={e => setFormData({ ...formData, description: e.target.value })}
             ></textarea>
-            <button
-              className="event-form__submit-btn"
-              onClick={(e) => onCreate(e)}
-            >
+            <button className="event-form__submit-btn" onClick={e => onCreate(e)}>
               Create
             </button>
           </form>

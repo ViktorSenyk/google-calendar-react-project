@@ -6,6 +6,7 @@
   border-radius: 8px;
   padding: 8px;
   color: #fff;
+
   &_relative {
     position: relative;
   }
@@ -39,10 +40,12 @@
     background-color: white;
     font-size: 13px;
     cursor: alias;
+
     &:hover {
       background-color: rgb(255 79 79);
       color: white;
     }
+
     &:active {
       background-color: red;
     }

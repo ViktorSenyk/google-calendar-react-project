@@ -1,10 +1,11 @@
 
-
 # Project: Google calendar
+
+( This is a React project bootstrapped with create-react-app )
 
 ### [Site link](https://charming-kelpie-93dc16.netlify.app/)
 
-Layout supports desktop (up-to-1920) version
+Layout support desktop (up-to-1920) version
 
 ### The tech stack is:
 

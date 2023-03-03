@@ -5,7 +5,7 @@ import './navigation.scss';
 export default function Navigation({ currentWeekInfo }) {
   return (
     <header className="calendar__header">
-      {currentWeekInfo.map((dayDate) => {
+      {currentWeekInfo.map(dayDate => {
         const [dateInfoInNumbers, dayName] = dayDate.split(' ');
         const [dayNumber] = dateInfoInNumbers.split('.');
         return (
