@@ -1,7 +1,7 @@
 
 # Project: Google calendar
 
-( This is a React project bootstrapped with create-react-app )
+( Created with *create-react-app* )
 
 ### [Site link](https://charming-kelpie-93dc16.netlify.app/)
 
